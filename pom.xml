@@ -7,12 +7,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.0.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>Library</artifactId> <!-- Updated artifactId to "Library" -->
+	<artifactId>Library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Library</name> <!-- Updated name to "Library" -->
+	<name>Library</name>
 	<description>Demo project for Spring Boot Thymeleaf and Hibernate </description>
 
 	<properties>
