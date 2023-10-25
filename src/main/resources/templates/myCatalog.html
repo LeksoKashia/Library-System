@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    <link th:href="@{styles/styles.css}" rel="stylesheet"/>
+    <link th:href="@{styles/background.css}" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<center> <h3> <i class="fa-solid fa-book fa-lg icon"></i> Books added by you</h3></center>
+<div class="container my-2">
+    <table class="table table-bordered table-striped table-hover table-custom">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="b : ${books}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${b.author}"></td>
+            <td th:text="${b.ISBN}"></td>
+            <td th:text="${b.genre}"></td>
+            <td class="action">
+                <a class="btn btn-primary" th:href="@{/editBook/{id}(id=${b.id})}" th:text="Edit"></a>
+                <a class="btn btn-danger" th:href="@{/deleteBook/{id}(id=${b.id})}" th:text="Delete"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<center> <h3> <i class="fa-solid fa-user fa-lg icon"></i> Patrons added by you</h3></center>
+<div class="container my-2">
+    <table class="table table-bordered table-striped table-hover table-custom">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Contact Info</th>
+            <th scope="col">Membership Status</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${patrons}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}" class="title"></td>
+            <td th:text="${p.contactInfo}"></td>
+            <td th:text="${p.membershipStatus}"></td>
+            <td class="action">
+                <a class="btn btn-primary" th:href="@{/editPatron/{id}(id=${p.id})}" th:text="Edit"></a>
+                <a class="btn btn-danger" th:href="@{/deletePatron/{id}(id=${p.id})}" th:text="Delete"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

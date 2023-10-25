@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="UTF-8">
+	<title>Registration and Login App</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+	<div class="container d-flex justify-content-center">
+		<a class="navbar-brand" href="#">PLease Log in</a>
+	</div>
+</nav>
+
+
+<br>
+<br>
+
+<center>
+	<h4>Try without log in</h4>
+	<a href="/libraryCatalog" class="btn btn-info">Proceed</a>
+</center>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+
+
+			<form th:action="@{/login}" method="post">
+
+				<!-- Error message -->
+				<div th:if="${param.error}" class="alert alert-danger">
+					Invalid username or password.
+				</div>
+
+				<!-- Logout message -->
+				<div th:if="${param.logout}" class="alert alert-info">
+					You have been logged out.
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="username">Email</label>
+					<input type="text" class="form-control" id="username" name="username" placeholder="Enter Email ID" autofocus="autofocus">
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6 offset-sm-3">
+							<input type="submit" name="login-submit" id="login-submit" class="btn btn-primary btn-block" value="Log In" />
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<div class="form-group">
+				<span>New Librarian? <a href="/registration" th:href="@{/registration}">Register here</a></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
