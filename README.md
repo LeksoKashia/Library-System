@@ -26,13 +26,15 @@
 <h2>Setting Up the Project</h2>
 <ol>
     <li><strong>Clone the Repository:</strong></li>
-    <pre><code>git clone https://github.com/your-username/library-management-system.git</code></pre>
+    <pre><code>git clone https://github.com/LeksoKashia/library-management-system.git</code></pre>
+       <br/>
     
   <li><strong>Database Setup:</strong></li>
     <ul>
         <li>Install and configure MySQL.</li>
         <li>Create a database named 'library'.</li>
     </ul>
+    <br/>
     
   <li><strong>Configuration:</strong></li>
     <p>Configure your database connection in the application properties file (application.properties).</p>
@@ -42,12 +44,12 @@
         <li>Open the project in your preferred Java IDE.</li>
         <li>Build and run the application.</li>
    </ul>
+   <br/>
     
   <li><strong>Access the Application:</strong></li>
   <p>Open a web browser and go to <a href="http://localhost:8080">http://localhost:8080</a> to access the Library Management System.</p>
     
-   <li><strong>Log in:</strong></li>
-  <p>Log in using the librarian account you created during the initial setup.</p>
+
 </ol>
 
 <p>You are now ready to use the Library Management System. Please refer to the project's documentation for more details on using the application.</p>
