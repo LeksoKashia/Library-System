@@ -26,7 +26,7 @@
 <h2>Setting Up the Project</h2>
 <ol>
     <li><strong>Clone the Repository:</strong></li>
-    <pre><code>git clone https://github.com/LeksoKashia/library-management-system.git</code></pre>
+    <pre><code>git clone https://github.com/LeksoKashia/Library-System.git </code></pre>
        <br/>
     
   <li><strong>Database Setup:</strong></li>
