@@ -4,8 +4,6 @@ import com.example.library.model.Librarian;
 import com.example.library.repository.BookRepository;
 import com.example.library.repository.LibrarianRepository;
 import com.example.library.model.Book;
-import com.example.library.model.Patron;
-import com.example.library.repository.PatronRepository;
 import com.example.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,8 +26,6 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    @Autowired
-    private PatronRepository patronRepository;
 
     @GetMapping("/register_book")
     public String registerBook() {
@@ -36,18 +33,6 @@ public class BookController {
         return "crud/registerBook";
     }
 
-    @GetMapping("/myCatalog")
-    public String myCatalog(Model model, Principal principal) {
-        Librarian librarian = librarianRepository.findByEmail(principal.getName());
-
-        List<Book> books = bookRepository.findByLibrarian(librarian);
-        List<Patron> patrons = patronRepository.findByLibrarian(librarian);
-
-        model.addAttribute("books", books);
-        model.addAttribute("patrons", patrons);
-
-        return "myCatalog";
-    }
 
     @PostMapping("/save")
     public String saveBook(@ModelAttribute Book book, Principal principal) {
@@ -74,22 +59,59 @@ public class BookController {
         return "redirect:/myCatalog";
     }
 
-
     @GetMapping("/libraryCatalog")
     public String all(Model model, Principal principal) {
-        List<Book> books = bookRepository.findAll();
-        List<Patron> patrons = patronRepository.findAll();
 
         if (principal != null) {
             Librarian librarian = librarianRepository.findByEmail(principal.getName());
             model.addAttribute("librarian_id", librarian.getId());
         }
+        List<Book> books = bookRepository.findAll();
+        List<Librarian> librarians = librarianRepository.findAll();
+
+        List<Librarian> patrons = new ArrayList<>();
+
+        for (Librarian l : librarians) {
+            String role = l.getRole();
+            if (role != null) {
+                patrons.add(l);
+            }
+        }
+
+
 
         model.addAttribute("books", books);
         model.addAttribute("patrons", patrons);
 
+
         return "libraryCatalog";
     }
+
+    @GetMapping("/myCatalog")
+    public String myCatalog(Model model, Principal principal) {
+        Librarian librarian = librarianRepository.findByEmail(principal.getName());
+        Long i = librarian.getId();
+        String s = String.valueOf(i);
+
+        List<Book> books = bookRepository.findByLibrarian(librarian);
+        List<Librarian> librarians = librarianRepository.findAll();
+
+        List<Librarian> patrons = new ArrayList<>();
+
+
+        for (Librarian l : librarians) {
+            String role = l.getRole();
+            if (role != null && s.equals(role.substring(6))) {
+                patrons.add(l);
+            }
+        }
+        model.addAttribute("books", books);
+        model.addAttribute("patrons", patrons);
+
+        return "myCatalog";
+    }
+
+
 
 
 

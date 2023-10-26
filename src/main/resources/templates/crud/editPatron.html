@@ -17,23 +17,39 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 
-<div class="container my-5 p-5">
+<div class="container my-2 p-2">
     <h1 class="text-center">Edit Patron</h1>
     <form class="col-md-4 offset-md-4"  th:action="@{/save_patron}" method="post" th:object="${patron}">
         <input type="hidden"  th:value="${patron.id}" name="id"/>
         <div class="mb-3">
-            <label  class="form-label">Name
-            </label> <input type="text" class="form-control"  th:value="${patron.name}"  name="name">
+            <label  class="form-label">First Name
+            </label> <input type="text" class="form-control"  th:value="${patron.firstName}"  name="firstName">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Last Name
+            </label> <input type="text" class="form-control"  th:value="${patron.lastName}"  name="lastName">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Email
+            </label> <input type="text" class="form-control"  th:value="${patron.email}"  name="email">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="text" class="form-control" th:field="*{password}" readonly>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Contact Info
             </label> <input type="text" class="form-control" th:value="${patron.contactInfo}" name="contactInfo">
         </div>
-        <div class="mb-3">
+        <div class="mb-3" >
             <label  class="form-label">Membership Status
             </label> <input type="text" class="form-control" th:value="${patron.membershipStatus}"  name="membershipStatus">
         </div>
+
+        <input style="display: none" type="text" class="form-control" th:field="*{role}" readonly>
 
         <center><button type="submit" class="btn btn-primary">Submit</button></center>
     </form>

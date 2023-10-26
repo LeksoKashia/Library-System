@@ -18,27 +18,25 @@
 <center> <i class="fa-solid fa-user fa-lg" style="font-size: 90px; margin: 90px 0 50px 0; color: #184081;"></i> </center>
 
 <div class="container my-2 p-2" >
+    <center><p>Use these credentials to log in as a user(first you should register patron and log out)</p></center>
     <h4 class="text-center">New Patron Register</h4>
+
     <form class="col-md-4 offset-md-4" th:action="@{/save_patron}" method="post">
-        <div class="mb-3">
-            <label  class="form-label">Name</label>
-            <input type="text" class="form-control" name="name" required>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label">Contact Info</label>
-            <input type="text" class="form-control" name="contactInfo" required>
-        </div>
-        <div class="mb-3">
-            <label  class="form-label">Membership Status</label>
+        <span>first name</span>
+        <input type="text" class="form-control" name="firstName" required>
+        <span>last name</span>
+        <input type="text" class="form-control" name="lastName" required>
+        <span>Email</span>
+        <input type="text" class="form-control" name="email" required>
+        <span>password</span>
+        <input type="text" class="form-control" name="password" required>
+        <span>contact info</span>
+        <input type="text" class="form-control" name="contactInfo" required>
+        <span>membership status</span>
+        <input type="text" class="form-control" name="membershipStatus" required>
+        <input type="hidden" name="role"  value="patron"/>
 
-            <select name="membershipStatus" required>
-                <option value="" disabled selected>Choose</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-            </select>
-
-        </div>
 
         <center><button type="submit" class="btn btn-primary">Submit</button></center>
     </form>

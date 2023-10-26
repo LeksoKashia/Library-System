@@ -4,8 +4,6 @@ import com.example.library.model.Book;
 import com.example.library.model.Librarian;
 import com.example.library.repository.BookRepository;
 import com.example.library.repository.LibrarianRepository;
-import com.example.library.repository.PatronRepository;
-import com.example.library.model.Patron;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,8 +20,6 @@ public class LibraryApplication implements CommandLineRunner {
 	@Autowired
 	BookRepository bRepo;
 
-	@Autowired
-	PatronRepository pRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LibraryApplication.class, args);
@@ -36,13 +32,12 @@ public class LibraryApplication implements CommandLineRunner {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 			Librarian firstLibrarian = new Librarian("admin", "admin", "admin@admin.com", passwordEncoder.encode("admin"));
+			firstLibrarian.setRole("patron");
 			Librarian secondLibrarian = new Librarian("Lekso", "Kashia", "lekso@kashia.com", passwordEncoder.encode("123"));
 
 			Book firstBook = new Book("war and peace", "Lev Tolstoy", "978-3-16-148410-0", "war", firstLibrarian);
 			Book secondBook = new Book("Vefxistyaosani", "Shota Rustaveli", "478-3-13-148410-4", "diverse", secondLibrarian);
 
-			Patron firstPatron = new Patron("Luka", "555219503", "active", firstLibrarian);
-			Patron secondPatron = new Patron("Lilu", "555212503", "active", secondLibrarian);
 
 			uRepo.save(firstLibrarian);
 			uRepo.save(secondLibrarian);
@@ -50,8 +45,6 @@ public class LibraryApplication implements CommandLineRunner {
 			bRepo.save(firstBook);
 			bRepo.save(secondBook);
 
-			pRepo.save(firstPatron);
-			pRepo.save(secondPatron);
 
 			markerFile.createNewFile();
 		}
