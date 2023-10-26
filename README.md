@@ -3,7 +3,7 @@
 <h2>Project Overview</h2>
     <p>
         The Library Management System is a powerful software application designed to streamline library operations.
-        This system enables efficient management of books, patrons. Key features include user and book management, search and filtering capabilities, and a user-friendly web-based interface.
+        This system enables efficient management of books, patrons. Key features include user and book management, search and filtering capabilities, book borrowing system and a user-friendly web-based interface.
     </p>
 
  <h2>Features</h2>
