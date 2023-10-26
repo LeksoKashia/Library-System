@@ -11,7 +11,7 @@
         <li>User Management: Create and manage librarian accounts, and allow librarians to log in.</li>
         <li>Book Management: Add, edit, and remove books, and display a list of all library books.</li>
         <li>Patron Management: Add, edit, and remove patrons, and display a list of all library patrons.</li>
-        <li>Borrowing Management: Patrons can borrow books from librarians for the specific time and then return</li>
+        <li>Borrowing Management: Patrons can borrow books from librarians for the specific time and then return.</li>
         <li>Search and Filtering: Powerful search and filtering for books and patrons based on criteria like title, author, and name.</li>
     </ul>
 
