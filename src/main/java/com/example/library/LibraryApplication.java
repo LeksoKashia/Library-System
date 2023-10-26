@@ -32,11 +32,12 @@ public class LibraryApplication implements CommandLineRunner {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 			Librarian firstLibrarian = new Librarian("admin", "admin", "admin@admin.com", passwordEncoder.encode("admin"));
-			firstLibrarian.setRole("patron");
 			Librarian secondLibrarian = new Librarian("Lekso", "Kashia", "lekso@kashia.com", passwordEncoder.encode("123"));
 
-			Book firstBook = new Book("war and peace", "Lev Tolstoy", "978-3-16-148410-0", "war", firstLibrarian);
-			Book secondBook = new Book("Vefxistyaosani", "Shota Rustaveli", "478-3-13-148410-4", "diverse", secondLibrarian);
+			Book firstBook = new Book("war and peace", "Lev Tolstoy", "978-1-16-148410-0", "War", firstLibrarian);
+			Book secondBook = new Book("Vefxistyaosani", "Shota Rustaveli", "478-3-13-148410-4", "Poem", firstLibrarian);
+			Book thirdBook = new Book("Don Quixote", "Miguel de Cervantes", "578-3-12-148410-2", "Novel", secondLibrarian);
+			Book fourthBook = new Book("The trial", "Franz Kafka", "878-2-13-148410-5", " Absurdist fiction", secondLibrarian);
 
 
 			uRepo.save(firstLibrarian);
@@ -44,6 +45,8 @@ public class LibraryApplication implements CommandLineRunner {
 
 			bRepo.save(firstBook);
 			bRepo.save(secondBook);
+			bRepo.save(thirdBook);
+			bRepo.save(fourthBook);
 
 
 			markerFile.createNewFile();
